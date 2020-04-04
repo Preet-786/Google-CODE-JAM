@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+#include <iostream> 
+#include <string> 
+#define int long long
+#define Fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+using namespace std;
+signed main()
+{
+    Fast
+    int t; cin>>t;
+    int k=1;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int a[n][n];
+        set <int> s;
+        int r=0,co=0,sum=0;
+        for(int i=0;i<n;i++)
+        {
+            
+            for(int j=0;j<n;j++)
+                {cin>>a[i][j]; s.insert(a[i][j]);}
+                if(s.size()!=n){r++;}
+                s.clear();            
+        }
+       for(int i=0;i<n;i++)
+       {
+           sum+=a[i][i];
+           for(int j=0;j<n;j++)
+           {
+            s.insert(a[j][i]);               
+           }
+           if(s.size()!=n){co++;}
+                s.clear();
+       }
+        cout<<"Case #"<<k++<<": "<<sum<<" "<<r<<" "<<co;
+        cout<<"\n";
+    }
+}

@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+#define int long long int
+#define Fast ios_base::sync_with_stdio(false);cin.tie(NULL); cout.tie(NULL);
+#define mod 1000000007
+using namespace std;
+signed main()
+{
+    Fast
+	int t; cin>>t;
+	for(int z=1;z<=t;z++)
+	{
+		int n;
+		cin>>n; map < pair<int,int>,int >m;
+		vector < pair<int,int> >v(n);
+		string ans="";
+		for(int i=0;i<n;i++)
+            ans+="C";
+		for(int i=0;i<n;i++)
+		{
+			int x,y; cin>>x>>y;
+			m[{x,y}]=i;
+			v[i]=make_pair(x,y);
+		}
+		sort(v.begin(),v.end());
+
+	    ans[m[{v[0].first,v[0].second}]]='C';
+
+	    int e=v[0].second;
+	    int ej;
+	    int flag=0,impl=0;
+	    for(int i=1;i<n;i++)
+	    {
+	    	if(v[i].first>=e) { ans[m[{v[i].first,v[i].second}]]='C'; e=v[i].second;}
+			else if(v[i].first<e && flag==0)
+			{flag=1; ej=v[i].second; ans[m[{v[i].first,v[i].second}]]='J';}
+			else if(v[i].first<e && v[i].first>=ej)
+			{ej=v[i].second;ans[m[{v[i].first,v[i].second}]]='J';}
+			else if(v[i].first<e && v[i].first<ej){impl=1;break;}
+		}
+		if(impl==1) cout<<"Case #"<<z<<": "<<"IMPOSSIBLE"<<endl;
+		else cout<<"Case #"<<z<<": "<<ans<<endl;
+	}
+	return 0;
+}

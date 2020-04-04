@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+#define int long long
+#define Fast ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+using namespace std;
+signed main()
+{
+    Fast
+    int t; cin>>t;
+    int k=1;
+    while(t--)
+    {
+        string s; cin>>s;
+        int p=0,x=s[0]-'0',y;
+        string ans="";
+        if(x==0){ans+="0";}
+        else{
+            p=x;
+            while(x--){ans+="(";}
+            ans+=s[0];
+        }
+        for(int i=1;i<s.length();i++)
+        {
+            x=s[i]-'0';
+            y=s[i-1]-'0';
+           /* if(s[i]=='0')
+            {
+             while(p--){ans+=")";}
+             ans+="0";
+             p=0;
+            }*/
+            if(x>y)
+            {
+                int z=x-y;
+                p+=z;
+                while(z--) {ans+="(";}
+                ans+=s[i];
+            }
+            else if(x<y)
+            {
+                int z=y-x;
+                p=p-z;
+                while(z--) {ans+=")";}
+                ans+=s[i];
+            }
+            else{
+                ans+=s[i];
+            }
+        }
+        //cout<<p<<" P"<<endl;
+        while(p--){ans+=")";}
+        cout<<"Case #"<<k++<<": "<<ans<<endl;
+
+    }
+}
