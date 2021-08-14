@@ -1,3 +1,2 @@
 # Google-CODE-JAM (2020)
-# Qualification Round
-# All Problems' Solutions (C++)
+ : Sollution of All Problems of Qualification Round in C++
